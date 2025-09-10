@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 4000;
-const CALCOM_API_BASE = 'https://api.cal.com/v1';
+const CALCOM_API_BASE = 'https://api.cal.com/v2';
 
 app.use(cors());
 app.use(express.json());
