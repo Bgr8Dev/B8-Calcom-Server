@@ -29,13 +29,12 @@ app.get('/bookings', async (req, res) => {
     
     const url = new URL(CALCOM_API_BASE + '/bookings');
     Object.entries(query).forEach(([k, v]) => url.searchParams.append(k, v));
-    // Add apiKey to Cal.com request
-    url.searchParams.append('apiKey', apiKey);
     
     console.log(`[PROXY] Calling Cal.com API: ${url.toString()}`);
     
     const calRes = await fetch(url.toString(), {
       headers: {
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
     });
@@ -66,13 +65,12 @@ app.get('/event-types', async (req, res) => {
     
     const url = new URL(CALCOM_API_BASE + '/event-types');
     Object.entries(query).forEach(([k, v]) => url.searchParams.append(k, v));
-    // Add apiKey to Cal.com request
-    url.searchParams.append('apiKey', apiKey);
     
     console.log(`[PROXY] Calling Cal.com API: ${url.toString()}`);
     
     const calRes = await fetch(url.toString(), {
       headers: {
+        'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
     });
